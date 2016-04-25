@@ -5,15 +5,21 @@
 		<img class="img-responsive" ng-src="{{booksShowCtrl.book.image}}" />
 	</div>
 	<div class="col-xs-8">
+		<div ng-show="!booksSHowCtrl.editing">
 		<h3>{{booksShowCtrl.book.title}}</h3></a>
 		<p>by {{booksShowCtrl.book.author}}</p>
 		<p>Released: {{booksShowCtrl.book.releaseDate}}</p>
-		<form ng-submit="booksShowCtrl.editBook()">
-			<input class="form-control" type="text" ng-model="booksShowCtrl.book.title">
-			<input class="form-control" type="text" ng-model="booksShowCtrl.book.author">
-			<input class="form-control" type="text" ng-model="booksShowCtrl.book.releaseDate">
-			<input class="btn btn-primary" type="submit" value="Save">
-		</form>
-		<input class="btn btn-danger" type="button" value="Delete" ng-click="booksShowCtrl.deleteBook()">
+		<input class="btn btn-primary" type="button" value="Edit" ng-show="booksShowCtrl.editing" ng-click="booksShowCtrl.editing=true">
+	</div>
+		<div class="" ng-show="booksShowCtrl.editing">
+			<form ng-submit="booksShowCtrl.editBook()">
+				<input class="form-control" type="text" ng-model="booksShowCtrl.book.title">
+				<input class="form-control" type="text" ng-model="booksShowCtrl.book.author">
+				<input class="form-control" type="text" ng-model="booksShowCtrl.book.releaseDate">
+				<input class="btn btn-primary" type="submit" value="Save">
+				<input class="btn btn-warning" ng-click="booksShowCtrl.cancelEdits()" value="Cancel">
+			</form>
+			<input class="btn btn-danger" type="button" value="Delete" ng-click="booksShowCtrl.deleteBook()">
+		</div>
 	</div>
 </div>

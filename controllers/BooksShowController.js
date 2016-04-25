@@ -6,6 +6,7 @@ BooksShowController.$inject = ['$http', '$routeParams', '$location'];
 function BooksShowController($http, $routeParams, $location) {
     var vm = this;
     var bookId = $routeParams.id;
+    vm.editing = false;
 
     $http({
         method: 'GET',
